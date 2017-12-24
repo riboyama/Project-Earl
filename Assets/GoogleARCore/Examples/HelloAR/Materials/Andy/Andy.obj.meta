@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: 0e8c4400e5a274e79b60fa5a300aab17
+timeCreated: 1503349535
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Andy_GEO
+    100004: Feather29_low
+    100006: Feather29_low1
+    100008: loPo_beak_low
+    100010: loPo_body_low
+    100012: loPo_dangle01_low
+    100014: loPo_dangle02_low
+    100016: loPo_dangle03_low
+    100018: loPo_dangle04_low
+    100020: loPo_dangle05_low
+    100022: loPo_Eyes_low
+    100024: loPo_Face_low
+    100026: loPo_Goggles_low
+    100028: loPo_Hat_low
+    100030: loPo_ring01_low
+    100032: loPo_Scarf_dangly_low
+    100034: loPo_strap_low
+    100036: Scarf_low_loPo
+    400000: //RootNode
+    400002: Andy_GEO
+    400004: Feather29_low
+    400006: Feather29_low1
+    400008: loPo_beak_low
+    400010: loPo_body_low
+    400012: loPo_dangle01_low
+    400014: loPo_dangle02_low
+    400016: loPo_dangle03_low
+    400018: loPo_dangle04_low
+    400020: loPo_dangle05_low
+    400022: loPo_Eyes_low
+    400024: loPo_Face_low
+    400026: loPo_Goggles_low
+    400028: loPo_Hat_low
+    400030: loPo_ring01_low
+    400032: loPo_Scarf_dangly_low
+    400034: loPo_strap_low
+    400036: Scarf_low_loPo
+    2100000: Andy_GEOMat
+    2100002: initialShadingGroup
+    2300000: Andy_GEO
+    2300002: Feather29_low
+    2300004: Feather29_low1
+    2300006: loPo_beak_low
+    2300008: loPo_body_low
+    2300010: loPo_dangle01_low
+    2300012: loPo_dangle02_low
+    2300014: loPo_dangle03_low
+    2300016: loPo_dangle04_low
+    2300018: loPo_dangle05_low
+    2300020: loPo_Eyes_low
+    2300022: loPo_Face_low
+    2300024: loPo_Goggles_low
+    2300026: loPo_Hat_low
+    2300028: loPo_ring01_low
+    2300030: loPo_Scarf_dangly_low
+    2300032: loPo_strap_low
+    2300034: Scarf_low_loPo
+    3300000: Andy_GEO
+    3300002: Feather29_low
+    3300004: Feather29_low1
+    3300006: loPo_beak_low
+    3300008: loPo_body_low
+    3300010: loPo_dangle01_low
+    3300012: loPo_dangle02_low
+    3300014: loPo_dangle03_low
+    3300016: loPo_dangle04_low
+    3300018: loPo_dangle05_low
+    3300020: loPo_Eyes_low
+    3300022: loPo_Face_low
+    3300024: loPo_Goggles_low
+    3300026: loPo_Hat_low
+    3300028: loPo_ring01_low
+    3300030: loPo_Scarf_dangly_low
+    3300032: loPo_strap_low
+    3300034: Scarf_low_loPo
+    4300000: Andy_GEO
+    4300002: Feather29_low
+    4300004: Feather29_low1
+    4300006: loPo_beak_low
+    4300008: loPo_body_low
+    4300010: loPo_dangle01_low
+    4300012: loPo_dangle02_low
+    4300014: loPo_dangle03_low
+    4300016: loPo_dangle04_low
+    4300018: loPo_dangle05_low
+    4300020: loPo_Eyes_low
+    4300022: loPo_Face_low
+    4300024: loPo_Goggles_low
+    4300026: loPo_Hat_low
+    4300028: loPo_ring01_low
+    4300030: loPo_Scarf_dangly_low
+    4300032: loPo_strap_low
+    4300034: Scarf_low_loPo
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
