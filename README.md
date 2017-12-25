@@ -1,5 +1,7 @@
-# Project-Earl
-An AR assistant using facial, object and voice recognition. With a cool owl
+# Project-Earl a0.5.x
+An AR assistant using facial, object and voice recognition. Contains a very nice owl.
+
+
 This project requires Unity 2017.3.0f2 or higher, an ARM64(Snapdragon 820+) Android 7.1+ device and arcore-preview2.apk installed.
 Earl can be build in 2 versions, Full support has all features, partial support lacks Emotion recognition and therefore only has voice recognition*.
 
@@ -16,6 +18,7 @@ Full Support:
     Google Pixel (XL)
     Google Pixel 2 (XL
     Samsung S8
+    Probably other Snapdragon 835 devices
 
 
 Google ARCore SDK for Unity
