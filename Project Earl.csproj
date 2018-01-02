@@ -288,6 +288,7 @@
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\JSONParser.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\PointcloudVisualizer.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\TrackedPlaneVisualizer.cs" />
+    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\WatsonController.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Anchor.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\AndroidPermissionsManager.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\AndroidPermissionsRequestResult.cs" />
