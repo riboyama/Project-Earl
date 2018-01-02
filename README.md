@@ -7,18 +7,20 @@ Earl can be build in 2 versions, Full support has all features, partial support 
 
 *To be added in feature versions
 
-# Tested Devices
+# Supported Devices
 Partial support, configurable in the EmotionController, boolean comp:
 
     OnePlus 3(T)
+    Google Nexus 6P
+    Other Snapdragon 820/810? devices
     
 Full Support:
 
     OnePlus 5(T)
     Google Pixel (XL)
-    Google Pixel 2 (XL
+    Google Pixel 2 (XL)
     Samsung S8
-    Probably other Snapdragon 835 devices
+    Other Snapdragon 835 devices with PDAF
 
 
 Google ARCore SDK for Unity
