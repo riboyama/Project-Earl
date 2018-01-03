@@ -61,6 +61,7 @@ public class EmotionController : MonoBehaviour {
         camAvailable = true;
         emoteSnackbar.SetActive(true);
         StartCoroutine(emotionCall());
+       
     }
 
     Texture2D rotateTexture(Texture2D originalTexture, bool clockwise)
