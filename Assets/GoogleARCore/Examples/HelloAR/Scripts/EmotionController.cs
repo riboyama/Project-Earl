@@ -27,13 +27,13 @@ public class EmotionController : MonoBehaviour {
     /// <summary>
     /// Compatibility boolean, use true for duo-camera phones, false for old phones
     /// </summary>
-    private bool comp = false;
+    private bool comp = true;
 
     // Use this for initialization
     void Start () {
         emoteSnackbar.SetActive(false);
         defaultBackground = background.texture;
-        if (comp)
+        if (comp==true)
         {
             startFrontCam();
         }
@@ -113,8 +113,10 @@ public class EmotionController : MonoBehaviour {
                 }
 
                 string downloadedJson = www.downloadHandler.text;
-                if (downloadedJson.Contains("faceRectangle"))
+                
+                if (verifyJSON(downloadedJson))
                 {
+                    
                     responseText.text = ("You look " + generateResponse(EmotionData.FromJson(downloadedJson)));
                 }
                   
@@ -123,6 +125,21 @@ public class EmotionController : MonoBehaviour {
         }
 
 
+    }
+
+    public bool verifyJSON(string json) { 
+   
+        if (json.Contains("Unauthorized"))
+        {
+            responseText.text = "API Key Expired";
+            return false;
+        }
+        if (json.Contains("faceRectangle"))
+        {
+            Debug.Log("EarlDebug: Correct JSON!");
+            return true;
+        }
+        return false;
     }
 
     public UnityWebRequest generateRequest(byte[] bytes)
@@ -135,7 +152,7 @@ public class EmotionController : MonoBehaviour {
         www.downloadHandler = new DownloadHandlerBuffer();
 
         // set API key and upload and download handler to the request
-        www.SetRequestHeader("Ocp-Apim-Subscription-Key", "521098a971dd458da2ac4e1ac9582663");
+        www.SetRequestHeader("Ocp-Apim-Subscription-Key", "84746e612e58443d9f6fbe6ff380f73f");
 
         return www;
     }

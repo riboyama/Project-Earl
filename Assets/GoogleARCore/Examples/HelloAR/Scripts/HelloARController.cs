@@ -92,6 +92,7 @@ namespace GoogleARCore.HelloAR
         {            
             InvokeRepeating("findPlaceablePos", 5, 5);
             InvokeRepeating("lookAtCamera", 7, 0.5f);
+            
         }
 
         /// <summary>

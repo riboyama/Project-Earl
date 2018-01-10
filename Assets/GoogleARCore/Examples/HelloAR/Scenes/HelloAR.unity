@@ -208,7 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d580dbdccc3414e84dbdda42a292c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FrontCam: {fileID: 989943870}
+  fcamera: {fileID: 989943870}
+  BackgroundRenderer: {fileID: 0}
+  resWidth: 1080
+  resHeight: 1920
 --- !u!4 &76176839
 Transform:
   m_ObjectHideFlags: 0
@@ -266,7 +269,7 @@ MonoBehaviour:
   responseText: {fileID: 1767731966}
   background: {fileID: 1329469384}
   fit: {fileID: 1329469386}
-  emoteSnackbar: {fileID: 0}
+  emoteSnackbar: {fileID: 34298422}
 --- !u!4 &353227685
 Transform:
   m_ObjectHideFlags: 0
@@ -391,7 +394,7 @@ MonoBehaviour:
   AndyAndroidPrefab: {fileID: 1597405363919574, guid: 26a6524e7eb71de4f8d256b769c46dfb,
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
-  responseText: {fileID: 0}
+  responseText: {fileID: 1767731966}
 --- !u!20 &989943870 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20362215073346118, guid: c10877f7cd5764de18d46d7b777d1faa,
