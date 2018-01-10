@@ -1,4 +1,4 @@
-# Project-Earl a0.5.x
+# Project-Earl a0.6.x
 An AR assistant using facial, object and voice recognition. Contains a very nice owl.
 
 

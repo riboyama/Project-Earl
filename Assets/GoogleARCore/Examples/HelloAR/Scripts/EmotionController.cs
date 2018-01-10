@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Earl;
+using EarlWatson;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Linq;
+using GoogleARCore;
+using IBM.Watson.DeveloperCloud.Services.VisualRecognition.v3;
+using IBM.Watson.DeveloperCloud.Utilities;
+using IBM.Watson.DeveloperCloud.Logging;
+using IBM.Watson.DeveloperCloud.Connection;
 
 public class EmotionController : MonoBehaviour {
 
@@ -18,6 +24,17 @@ public class EmotionController : MonoBehaviour {
 
     public RawImage background;
     public AspectRatioFitter fit;
+
+    //Watson stuff
+    private string _visualRecognitionVersionDate = "2016-05-20";
+    private string _classifierID = "";
+
+    private int resWidth = 1080;
+    private int resHeight = 1920;
+
+    public Camera fcamera;
+    private Credentials credentials;
+    private VisualRecognition _visualRecognition;
 
     /// <summary>
     /// A gameobject parenting UI for displaying the "emotion" snackbar.
@@ -33,12 +50,18 @@ public class EmotionController : MonoBehaviour {
     void Start () {
         emoteSnackbar.SetActive(false);
         defaultBackground = background.texture;
-        if (comp==true)
+        if(comp)
         {
+            credentials = new Credentials("fa0d719942dea6bca4fe74a70b13ef9eff1d84c5", "https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify?");
+            _visualRecognition = new VisualRecognition(credentials);
+            _visualRecognition.VersionDate = _visualRecognitionVersionDate;
             startFrontCam();
         }
     }
 
+    /// <summary>
+    /// Starts up the frontcamera, contains confusing code
+    /// </summary>
     public void startFrontCam()
     {
         WebCamDevice[] devices = WebCamTexture.devices;
@@ -56,14 +79,29 @@ public class EmotionController : MonoBehaviour {
             return;
 
         }
+
         background.texture = backCam;
         backCam.Play();
         camAvailable = true;
         emoteSnackbar.SetActive(true);
-        StartCoroutine(emotionCall());
-       
+
+        StartCoroutine(emotionCall());      
     }
 
+    /// <summary>
+    /// Earl Debug message method, remove in production
+    /// </summary>
+    public void earlDebug(string message)
+    {
+        Debug.Log("EarlDebug: " + message);
+    }
+
+    /// <summary>
+    /// Since the phone is in Portrait mode rotate the image.
+    /// </summary>
+    /// <param name="originalTexture"> Landscape image</param>
+    /// <param name="clockwise">Rotate clockwise or not</param>
+    /// <returns></returns>
     Texture2D rotateTexture(Texture2D originalTexture, bool clockwise)
     {
         Color32[] original = originalTexture.GetPixels32();
@@ -89,6 +127,10 @@ public class EmotionController : MonoBehaviour {
         return rotatedTexture;
     }
 
+    /// <summary>
+    /// Starts capturing an image from the front camera, making webrequests
+    /// </summary>
+    /// <returns></returns>
     IEnumerator emotionCall()
     {
         bool running = true;
@@ -101,32 +143,116 @@ public class EmotionController : MonoBehaviour {
                 _ShowAndroidToastMessage("Earl encountered a problem connecting to the front camera. Please restart the app.");
                 Invoke("DoQuit", 1f);
             }
-
             byte[] bytes = generateBytes();
             UnityWebRequest www = generateRequest(bytes);
             using (www)
             {
                 yield return www.SendWebRequest();
-                if (www.isNetworkError)
-                {
-                    Debug.Log("A network error occured");
-                }
 
                 string downloadedJson = www.downloadHandler.text;
-                
-                if (verifyJSON(downloadedJson))
+
+                if (www.isNetworkError) { Debug.Log("A network error occured"); }
+                else if (verifyJSON(downloadedJson))
                 {
-                    
-                    responseText.text = ("You look " + generateResponse(EmotionData.FromJson(downloadedJson)));
+                    string response = generateResponse(EmotionData.FromJson(downloadedJson));
+                    responseText.text = ("You look " + response);
+                    getClassification(response);
                 }
                   
             }
             yield return new WaitForSeconds(5);
         }
+    }
 
+    /// <summary>
+    /// Use the WatsonSDK to ask for a classification of the image captured from the backcamera
+    /// </summary>
+    /// <param name="response">The recieved emotion</param>
+    public void getClassification(string response)
+    {
+        string[] owners = { "IBM", "me" };
+        string[] classifierIDs = { "default", _classifierID };
+        byte[] bytes = getFCameraBytes();
+        if (bytes != null)
+        {
+            earlDebug("Bytes: " + bytes.Length);
+            //  Classify using image path
+            if (!_visualRecognition.Classify(OnClassify, OnFail, bytes, owners, classifierIDs, 0.5f))
+            {
+                Log.Debug("ExampleVisualRecognition.Classify()", "Classify image failed!");
+                earlDebug("Failed to get a Watson image classification");
+            }
+        }
+        else
+        {
+            earlDebug("ARCore image has invalid bytedata");
+        }
+    }
+
+    /// <summary>
+    /// Get the byte[] from the backcamera
+    /// </summary>
+    /// <returns> byte array</returns>
+    private byte[] getFCameraBytes()
+    {
+        try
+        {
+            RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
+            fcamera.targetTexture = rt;
+            Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
+            fcamera.Render();
+            RenderTexture.active = rt;
+            screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
+            fcamera.targetTexture = null;
+            RenderTexture.active = null;
+            Destroy(rt);
+            return screenShot.EncodeToPNG();
+        } catch (System.Exception e)
+        {
+            earlDebug("Failed to generate ARCore image" + e);
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Called on Succes, parses json.
+    /// </summary>
+    /// <param name="classify"></param>
+    /// <param name="customData"></param>
+    private void OnClassify(ClassifyTopLevelMultiple classify, Dictionary<string, object> customData)
+    {
+        Log.Debug("ExampleVisualRecognition.OnClassify()", "Classify result: {0}", customData["json"].ToString());
+        earlDebug("WATSON SUCCES! : " + customData["json"].ToString());
+
+        WjsonToClass data = WjsonToClass.FromJson(customData["json"].ToString());
+
+        for(int i = 0; i < 2; i++)
+        {
+            earlDebug("Classifier scores begin: ");
+            earlDebug(data.Images[0].Classifiers[0].Classes[0].PurpleClass);
+            earlDebug(data.Images[0].Classifiers[0].Classes[0].Score.ToString());
+            earlDebug("Classifier scores end");
+        }
 
     }
 
+    /// <summary>
+    /// Called on failure from Visual Recognition
+    /// </summary>
+    /// <param name="error"></param>
+    /// <param name="customData"></param>
+    private void OnFail(RESTConnector.Error error, Dictionary<string, object> customData)
+    {
+        Log.Error("ExampleVisualRecognition.OnFail()", "Error received: {0}", error.ToString());
+        earlDebug("WATSON FAIL! : " + error.ToString());
+    }
+
+    /// <summary>
+    /// Verify JSON for errors
+    /// </summary>
+    /// <param name="json"></param>
+    /// <returns></returns>
     public bool verifyJSON(string json) { 
    
         if (json.Contains("Unauthorized"))
@@ -135,13 +261,17 @@ public class EmotionController : MonoBehaviour {
             return false;
         }
         if (json.Contains("faceRectangle"))
-        {
-            Debug.Log("EarlDebug: Correct JSON!");
+        {    
             return true;
         }
         return false;
     }
 
+    /// <summary>
+    /// Create WebRequest to Emotion API
+    /// </summary>
+    /// <param name="bytes">byte data from frontcamera</param>
+    /// <returns></returns>
     public UnityWebRequest generateRequest(byte[] bytes)
     {
         UnityWebRequest www = new UnityWebRequest("https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?", UnityWebRequest.kHttpVerbPOST);
@@ -157,6 +287,10 @@ public class EmotionController : MonoBehaviour {
         return www;
     }
 
+    /// <summary>
+    /// Generate bytes from device camera
+    /// </summary>
+    /// <returns>byte array</returns>
     public byte[] generateBytes()
     {
         Texture2D photo = new Texture2D(backCam.width, backCam.height, TextureFormat.RGB24, false);
@@ -165,10 +299,14 @@ public class EmotionController : MonoBehaviour {
         return photo.EncodeToPNG();
     }
 
+    /// <summary>
+    /// Change text in response snackbar
+    /// </summary>
+    /// <param name="data">JSON data class</param>
+    /// <returns>The highest rated emotion</returns>
     public string generateResponse(EmotionData[] data)
     {
         var item = data[0].Scores;
-
 
         Dictionary<string, double> boekje = new Dictionary<string, double>();
         boekje.Add("Angry", item.Anger);
