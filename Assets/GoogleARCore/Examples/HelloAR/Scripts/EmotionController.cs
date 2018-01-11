@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Linq;
 using GoogleARCore;
+using dbman;
 using IBM.Watson.DeveloperCloud.Services.VisualRecognition.v3;
 using IBM.Watson.DeveloperCloud.Utilities;
 using IBM.Watson.DeveloperCloud.Logging;
@@ -36,6 +37,10 @@ public class EmotionController : MonoBehaviour {
     private Credentials credentials;
     private VisualRecognition _visualRecognition;
 
+    private int loopTime = 10;
+
+    private dbManager ds;
+
     /// <summary>
     /// A gameobject parenting UI for displaying the "emotion" snackbar.
     /// </summary>
@@ -48,6 +53,7 @@ public class EmotionController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        ds = new dbManager("earldb.s3db");
         emoteSnackbar.SetActive(false);
         defaultBackground = background.texture;
         if(comp)
@@ -160,14 +166,14 @@ public class EmotionController : MonoBehaviour {
                 }
                   
             }
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(loopTime);
         }
     }
 
     /// <summary>
     /// Use the WatsonSDK to ask for a classification of the image captured from the backcamera
     /// </summary>
-    /// <param name="response">The recieved emotion</param>
+    /// <param name="response">The recieved emotion<s/param>
     public void getClassification(string response)
     {
         string[] owners = { "IBM", "me" };
@@ -230,8 +236,8 @@ public class EmotionController : MonoBehaviour {
         for(int i = 0; i < 2; i++)
         {
             earlDebug("Classifier scores begin: ");
-            earlDebug(data.Images[0].Classifiers[0].Classes[0].PurpleClass);
-            earlDebug(data.Images[0].Classifiers[0].Classes[0].Score.ToString());
+            earlDebug(data.Images[0].Classifiers[0].Classes[i].PurpleClass);
+            earlDebug(data.Images[0].Classifiers[0].Classes[i].Score.ToString());
             earlDebug("Classifier scores end");
         }
 
