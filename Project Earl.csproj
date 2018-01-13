@@ -286,6 +286,7 @@
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\EdgeDetector.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\TextureReader.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\TextureReaderApi.cs" />
+    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\commController.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\dbManager.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\EmotionController.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\Emotions.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\PointcloudVisualizer.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\SQLite.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\TrackedPlaneVisualizer.cs" />
+    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\ttsController.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\WatsonController.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\WJSONParser.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Anchor.cs" />

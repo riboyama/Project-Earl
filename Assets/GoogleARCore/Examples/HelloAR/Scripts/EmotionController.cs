@@ -39,6 +39,8 @@ public class EmotionController : MonoBehaviour {
 
     private int loopTime = 10;
 
+    private string curEmote = "";
+
     private dbManager ds;
 
     /// <summary>
@@ -161,8 +163,8 @@ public class EmotionController : MonoBehaviour {
                 else if (verifyJSON(downloadedJson))
                 {
                     string response = generateResponse(EmotionData.FromJson(downloadedJson));
-                    responseText.text = ("You look " + response);
-                    getClassification(response);
+                    responseText.text = ("You look " + response + " about ");
+                    getClassification();
                 }
                   
             }
@@ -174,7 +176,7 @@ public class EmotionController : MonoBehaviour {
     /// Use the WatsonSDK to ask for a classification of the image captured from the backcamera
     /// </summary>
     /// <param name="response">The recieved emotion<s/param>
-    public void getClassification(string response)
+    public void getClassification()
     {
         string[] owners = { "IBM", "me" };
         string[] classifierIDs = { "default", _classifierID };
@@ -232,13 +234,24 @@ public class EmotionController : MonoBehaviour {
         earlDebug("WATSON SUCCES! : " + customData["json"].ToString());
 
         WjsonToClass data = WjsonToClass.FromJson(customData["json"].ToString());
+        responseText.text += data.Images[0].Classifiers[0].Classes[0].PurpleClass;
+        try
+        {
+            ds.CreateEmotion(curEmote, System.Convert.ToSingle(data.Images[0].Classifiers[0].Classes[0].Score), System.DateTime.Now, data.Images[0].Classifiers[0].Classes[1].PurpleClass, data.Images[0].Classifiers[0].Classes[0].PurpleClass);
 
-        for(int i = 0; i < 2; i++)
+        } catch(System.Exception e)
+        {
+            earlDebug("Failed to Query Emotions to database: " + e);
+        }
+
+        //Debug stuff
+        for (int i = 0; i < 2; i++)
         {
             earlDebug("Classifier scores begin: ");
             earlDebug(data.Images[0].Classifiers[0].Classes[i].PurpleClass);
             earlDebug(data.Images[0].Classifiers[0].Classes[i].Score.ToString());
             earlDebug("Classifier scores end");
+            
         }
 
     }
