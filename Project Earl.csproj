@@ -296,7 +296,6 @@
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\SQLite.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\TrackedPlaneVisualizer.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\ttsController.cs" />
-    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\WatsonController.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\WJSONParser.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Anchor.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\AndroidPermissionsManager.cs" />

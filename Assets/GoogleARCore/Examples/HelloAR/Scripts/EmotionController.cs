@@ -21,7 +21,7 @@ public class EmotionController : MonoBehaviour {
 
     private bool camAvailable;
     private WebCamTexture backCam;
-    private Texture defaultBackground;
+    //private Texture defaultBackground;
 
     public RawImage background;
     public AspectRatioFitter fit;
@@ -57,7 +57,7 @@ public class EmotionController : MonoBehaviour {
     void Start () {
         ds = new dbManager("earldb.s3db");
         emoteSnackbar.SetActive(false);
-        defaultBackground = background.texture;
+        //defaultBackground = background.texture;
         if(comp)
         {
             credentials = new Credentials("fa0d719942dea6bca4fe74a70b13ef9eff1d84c5", "https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify?");
@@ -163,6 +163,7 @@ public class EmotionController : MonoBehaviour {
                 else if (verifyJSON(downloadedJson))
                 {
                     string response = generateResponse(EmotionData.FromJson(downloadedJson));
+                    curEmote = response;
                     responseText.text = ("You look " + response + " about ");
                     getClassification();
                 }
@@ -234,14 +235,16 @@ public class EmotionController : MonoBehaviour {
         earlDebug("WATSON SUCCES! : " + customData["json"].ToString());
 
         WjsonToClass data = WjsonToClass.FromJson(customData["json"].ToString());
-        responseText.text += data.Images[0].Classifiers[0].Classes[0].PurpleClass;
+        responseText.text = responseText.text + data.Images[0].Classifiers[0].Classes[0].PurpleClass;
         try
         {
             ds.CreateEmotion(curEmote, System.Convert.ToSingle(data.Images[0].Classifiers[0].Classes[0].Score), System.DateTime.Now, data.Images[0].Classifiers[0].Classes[1].PurpleClass, data.Images[0].Classifiers[0].Classes[0].PurpleClass);
 
         } catch(System.Exception e)
         {
+            _ShowAndroidToastMessage("Failed to Query Emotions to database: " + e);
             earlDebug("Failed to Query Emotions to database: " + e);
+            
         }
 
         //Debug stuff

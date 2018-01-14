@@ -204,7 +204,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213626811}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f445cf420f29814ba062b189b6e8e08, type: 3}
   m_Name: 
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213626811}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e8c06181e2426946b9cec73f5f79ee5, type: 3}
   m_Name: 
@@ -401,7 +401,7 @@ MonoBehaviour:
   FirstPersonCamera: {fileID: 989943870}
   TrackedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 2}
-  AndyAndroidPrefab: {fileID: 1597405363919574, guid: 26a6524e7eb71de4f8d256b769c46dfb,
+  AndyAndroidPrefab: {fileID: 1557134827114798, guid: 38e2cc000e26e0c4d9c7a3589b771355,
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
   responseText: {fileID: 1767731966}
