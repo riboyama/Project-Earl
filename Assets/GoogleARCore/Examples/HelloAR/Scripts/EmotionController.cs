@@ -235,7 +235,7 @@ public class EmotionController : MonoBehaviour {
         earlDebug("WATSON SUCCES! : " + customData["json"].ToString());
 
         WjsonToClass data = WjsonToClass.FromJson(customData["json"].ToString());
-        responseText.text = responseText.text + data.Images[0].Classifiers[0].Classes[0].PurpleClass;
+        responseText.text = data.Images[0].Classifiers[0].Classes[0].PurpleClass;
         try
         {
             ds.CreateEmotion(curEmote, System.Convert.ToSingle(data.Images[0].Classifiers[0].Classes[0].Score), System.DateTime.Now, data.Images[0].Classifiers[0].Classes[1].PurpleClass, data.Images[0].Classifiers[0].Classes[0].PurpleClass);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using npconvo;
 using System.Collections;
 using IBM.Watson.DeveloperCloud.Logging;
 using IBM.Watson.DeveloperCloud.Services.SpeechToText.v1;
@@ -6,6 +7,7 @@ using IBM.Watson.DeveloperCloud.Utilities;
 using IBM.Watson.DeveloperCloud.DataTypes;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// This class is an example of how to stream audio from the device microphone to the Speech to Text service in Unity.
@@ -15,9 +17,9 @@ using UnityEngine.UI;
 /// </summary>
 public class commController : MonoBehaviour
 {
-    private string _username = null;
-    private string _password = null;
-    private string _url = null;
+    private string _username = "4087e156-1697-4d34-81ac-384c86afecd7";
+    private string _password = "DWZaugj0AYof";
+    private string _url = "https://stream.watsonplatform.net/speech-to-text/api";
 
     /// <summary>
     /// Text field to display the results of streaming.
@@ -33,12 +35,15 @@ public class commController : MonoBehaviour
 
     private SpeechToText _speechToText;
 
+    private convoScript convo;
+
     void Start()
     {
         LogSystem.InstallDefaultReactors();
 
         //  Create credential and instantiate service
         Credentials credentials = new Credentials(_username, _password, _url);
+        convo = new convoScript();
 
         _speechToText = new SpeechToText(credentials);
         Active = true;
@@ -199,7 +204,7 @@ public class commController : MonoBehaviour
         yield break;
     }
 
-    private void OnRecognize(SpeechRecognitionEvent result)
+    public void OnRecognize(SpeechRecognitionEvent result)
     {
         if (result != null && result.results.Length > 0)
         {
@@ -210,6 +215,13 @@ public class commController : MonoBehaviour
                     string text = string.Format("{0} ({1}, {2:0.00})\n", alt.transcript, res.final ? "Final" : "Interim", alt.confidence);
                     Log.Debug("ExampleStreamingSplitSamples.OnRecognize()", text);
                     ResultsField.text = text;
+                    if ((text.Contains("Hello")|| text.Contains("Owl")|| text.Contains("Earl") || text.Contains("hello") || text.Contains("owl") || text.Contains("earl")) && text.Contains("Final"))
+                    {
+                        Debug.Log("EarlDebugComm: " + text);
+                        string replacement = Regex.Replace(text, @"\t|\n|\r", "");
+                        convo.Message(replacement);
+                        
+                    }
                 }
 
                 if (res.keywords_result != null && res.keywords_result.keyword != null)

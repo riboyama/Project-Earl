@@ -287,6 +287,8 @@
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\TextureReader.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\ComputerVision\Scripts\TextureReaderApi.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\commController.cs" />
+    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\ConvoJSON.cs" />
+    <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\convoScript.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\dbManager.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\EmotionController.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\HelloAR\Scripts\Emotions.cs" />
