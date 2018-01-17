@@ -16,6 +16,8 @@
         private string _password = "4L0pZtOEXlUs";
         private string _url = "https://stream.watsonplatform.net/text-to-speech/api";
 
+        private bool busy = false;
+
         TextToSpeech _textToSpeech;
         private void OnFail(RESTConnector.Error error, Dictionary<string, object> customData)
         {
@@ -41,8 +43,9 @@
 
         private void PlayClip(AudioClip clip)
         {
-            if (Application.isPlaying && clip != null)
+            if (Application.isPlaying && clip != null && busy == false)
             {
+                busy = true;
                 GameObject audioObject = new GameObject("AudioObject");
                 AudioSource source = audioObject.AddComponent<AudioSource>();
                 source.spatialBlend = 0.0f;
@@ -51,6 +54,7 @@
                 source.Play();
 
                 Object.Destroy(audioObject, clip.length);
+                busy = false;
             }
         }
     }

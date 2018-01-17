@@ -364,18 +364,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/GoogleARCore/Examples/HelloAR/Prefabs
+    - Assets/GoogleARCore/Examples/HelloAR/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/GoogleARCore/Examples/HelloAR/Prefabs
+  - Assets/GoogleARCore/Examples/HelloAR/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\Unity\Project Earl
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 103}
-    m_SelectedIDs: 8a290000
-    m_LastClickedID: 10634
+    scrollPos: {x: 0, y: 351}
+    m_SelectedIDs: d6290000
+    m_LastClickedID: 10710
     m_ExpandedIDs: 000000006e29000092290000302a0000442a00004c2a00004e2a0000682a0000942a00000e2b00006a2b00006c2b0000722b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -522,9 +522,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 68010000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 9efbffff00000000
+    m_ExpandedIDs: 06e9feff9ae9feffeaeafeffd2edfeff66eefeffb6effeff9ef3feff32f4feff82f5feff96f8feff2af9feff7afafeff9408ffff2809ffff780affffb635ffff4a36ffff9e37ffff069bffff9a9bffffee9cffff5abcffffeabcffff3abeffff2cc2ffffbcc2ffff0cc4ffff34c8ffffc4c8ffff18caffff9efbffff000000000e2c00002a2c00001e33000052330000563500008a350000403800007c380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -575,14 +575,14 @@ MonoBehaviour:
     height: 655
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 7859.944572302744
+  lastFramingTime: 519.5788956616713
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0.2429, z: -0.046701}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 0, y: 0.2429, z: -0.046701}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -610,9 +610,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0, y: 0, z: -0, w: -1}
   m_Size:
-    m_Target: 5.6797104
+    m_Target: 2293.7397
     speed: 2
-    m_Value: 5.6797104
+    m_Value: 2293.7397
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -75,9 +75,13 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         private bool m_IsQuitting = false;
 
+        private bool init = true;
+
         public Text responseText;
 
- 
+        public Text distanceText;
+
+
 
         /// <summary>
         /// Earl Debug message method, remove in production
@@ -91,7 +95,7 @@ namespace GoogleARCore.HelloAR
         public void Start()
         {            
             InvokeRepeating("findPlaceablePos", 5, 5);
-            InvokeRepeating("lookAtCamera", 7, 0.5f);
+            //InvokeRepeating("lookAtCamera", 7, 0.5f);
             
         }
 
@@ -100,39 +104,59 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         public void findPlaceablePos()
         {
-            int i = m_AllPlanes.Count - 1;
-            if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+            if (init)
             {
-                TrackableHitFlags rayFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
-                autoPlaceCompanion(m_AllPlanes[i].Position, rayFilter);
+                int i = m_AllPlanes.Count - 1;
+                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+                {
+                    TrackableHitFlags rayFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
+                    autoPlaceCompanion(m_AllPlanes[i].Position, rayFilter);
+                }
+            } else
+            {
+                int i = m_AllPlanes.Count - 3;
+                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+                {
+                    TrackableHitFlags rayFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
+                    autoPlaceCompanion(m_AllPlanes[i].Position, rayFilter);
+                }
             }
         }
 
         public void autoPlaceCompanion(Vector3 placement, TrackableHitFlags raycastFilter)
         {
             TrackableHit hit;
+            GameObject andyObject = GameObject.Find("andyObject");
+            float distance = 0;
 
-            if (Session.Raycast(placement.x, placement.y, raycastFilter, out hit))
-
+            if (andyObject != null)
             {
-                GameObject andyObject = GameObject.Find("andyObject");
-                if (andyObject != null)
+                distance = Vector3.Distance(andyObject.transform.position, FirstPersonCamera.transform.position);
+                distanceText.text = distance.ToString();
+            }
+            if (andyObject == null || distance > 4.5)
+            {
+                if (Session.Raycast(placement.x, placement.y, raycastFilter, out hit))
+
                 {
-                    Destroy(andyObject);
-                    Destroy(GameObject.Find("andyAnchor"));
+                    if (andyObject != null)
+                    {
+                        Destroy(andyObject);
+                        Destroy(GameObject.Find("andyAnchor"));
+                    }
+                    andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
+
+                    // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
+                    // world evolves.
+                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+                    // Make Andy model a child of the anchor.
+                    andyObject.transform.parent = anchor.transform;
+                    andyObject.name = "andyObject";
+                    anchor.name = "andyAnchor";
+                    // Andy should look at the camera but still be flush with the plane.
+                    lookAtCamera();
                 }
-                andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
-
-                // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-                // world evolves.
-                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-                // Make Andy model a child of the anchor.
-                andyObject.transform.parent = anchor.transform;
-                andyObject.name = "andyObject";
-                anchor.name = "andyAnchor";
-                // Andy should look at the camera but still be flush with the plane.
-                lookAtCamera();
             }
         }
 
@@ -156,6 +180,9 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         public void Update()
         {
+            lookAtCamera();
+
+            
             if (Input.GetKey(KeyCode.Escape))
             {
                 Application.Quit();
@@ -210,6 +237,8 @@ namespace GoogleARCore.HelloAR
             
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
             placeCompanion(touch, raycastFilter);
+
+            lookAtCamera();
         }
 
         public void placeCompanion(Touch touch, TrackableHitFlags raycastFilter)
