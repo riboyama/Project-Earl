@@ -57,6 +57,7 @@ namespace GoogleARCore.HelloAR
         /// A gameobject parenting UI for displaying the "searching for planes" snackbar.
         /// </summary>
         public GameObject SearchingForPlaneUI;
+        public GameObject EmoteUI;
 
         /// <summary>
         /// A list to hold new planes ARCore began tracking in the current frame. This object is used across
@@ -81,6 +82,13 @@ namespace GoogleARCore.HelloAR
 
         public Text distanceText;
 
+        public Text planeCountText;
+
+        private float distance = 0;
+
+        public RawImage background;
+        public AspectRatioFitter fit;
+        public bool eEnable = false;
 
 
         /// <summary>
@@ -95,7 +103,12 @@ namespace GoogleARCore.HelloAR
         public void Start()
         {            
             InvokeRepeating("findPlaceablePos", 5, 5);
-            //InvokeRepeating("lookAtCamera", 7, 0.5f);
+            if (!eEnable)
+            {
+                background.gameObject.SetActive(false);
+                fit.gameObject.SetActive(false);
+                EmoteUI.SetActive(false);
+            }
             
         }
 
@@ -104,22 +117,19 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         public void findPlaceablePos()
         {
+            planeCountText.text = "c: "+m_AllPlanes.Count.ToString();
+            int i = -69;
             if (init)
             {
-                int i = m_AllPlanes.Count - 1;
-                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
-                {
-                    TrackableHitFlags rayFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
-                    autoPlaceCompanion(m_AllPlanes[i].Position, rayFilter);
-                }
+                 i = m_AllPlanes.Count - 1;
             } else
             {
-                int i = m_AllPlanes.Count - 3;
-                if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
-                {
-                    TrackableHitFlags rayFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
-                    autoPlaceCompanion(m_AllPlanes[i].Position, rayFilter);
-                }
+                 i = m_AllPlanes.Count - 3;     
+            }
+            if (m_AllPlanes[i].TrackingState == TrackingState.Tracking && i!=-69)
+            {
+                TrackableHitFlags rayFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
+                autoPlaceCompanion(m_AllPlanes[i].Position, rayFilter);
             }
         }
 
@@ -127,13 +137,7 @@ namespace GoogleARCore.HelloAR
         {
             TrackableHit hit;
             GameObject andyObject = GameObject.Find("andyObject");
-            float distance = 0;
 
-            if (andyObject != null)
-            {
-                distance = Vector3.Distance(andyObject.transform.position, FirstPersonCamera.transform.position);
-                distanceText.text = distance.ToString();
-            }
             if (andyObject == null || distance > 4.5)
             {
                 if (Session.Raycast(placement.x, placement.y, raycastFilter, out hit))
@@ -168,6 +172,8 @@ namespace GoogleARCore.HelloAR
             GameObject andyObject = GameObject.Find("andyObject");
             if (andyObject != null)
             {
+                distance = Vector3.Distance(andyObject.transform.position, FirstPersonCamera.transform.position);
+                distanceText.text = distance.ToString();
                 andyObject.transform.LookAt(FirstPersonCamera.transform);
                 andyObject.transform.rotation = Quaternion.Euler(0.0f,
                 andyObject.transform.rotation.eulerAngles.y, andyObject.transform.rotation.z);
