@@ -177,5 +177,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 8b2457f280ce2f495d70503228bc3a6d Assembly-CSharp.dll:IBM.Watson.DeveloperCloud.Utilities.FrameRateCounter
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:GoogleARCore.HelloAR.TrackedPlaneVisualizer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:IBM.Watson.DeveloperCloud.Utilities.KeyEventManager
+ebedc07812dc8a65344943cf0acb872e Assembly-CSharp.dll:.LookAtCamera
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ExampleDiscovery
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ExampleNaturalLanguageClassifier

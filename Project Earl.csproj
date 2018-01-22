@@ -361,6 +361,7 @@
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Utility\ConversionHelper.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Utility\IntPtrEqualityComparer.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Utility\MarshalingHelper.cs" />
+    <Compile Include="Assets\LookAtCamera.cs" />
     <Compile Include="Assets\UnityPackages\JsonNetSample\JsonNetSample.cs" />
     <Compile Include="Assets\watson\Examples\ServiceExamples\Scripts\ExampleAlchemyDataNews.cs" />
     <Compile Include="Assets\watson\Examples\ServiceExamples\Scripts\ExampleAlchemyLanguage.cs" />
