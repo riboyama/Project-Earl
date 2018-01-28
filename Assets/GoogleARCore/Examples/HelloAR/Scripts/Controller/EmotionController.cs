@@ -175,6 +175,16 @@ public class EmotionController : MonoBehaviour {
                     curEmote = response;
                     responseText.text = ("You look " + response + " about ");
                     getClassification();
+                    if(response == "sad")
+                    {
+                        var eAndy = GameObject.Find("andyObject");
+                        if(eAndy != null){
+                            Animator anim = eAndy.GetComponent<Animator>();
+                            anim.SetBool("isSad", true);
+                            anim.Play("Sad");
+                            anim.SetBool("isSad", false);
+                        }
+                    }
                 }
                   
             }

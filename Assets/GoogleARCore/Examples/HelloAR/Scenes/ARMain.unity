@@ -465,7 +465,7 @@ MonoBehaviour:
   FirstPersonCamera: {fileID: 989943870}
   TrackedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 2}
-  AndyAndroidPrefab: {fileID: 1328096032659120, guid: 64fcb559ebc710843b4dacddac8bc02c,
+  AndyAndroidPrefab: {fileID: 1473143704158382, guid: 3470555b1416a87488362ee3e4b46177,
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
   EmoteUI: {fileID: 34298422}
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -58,6 +58,22 @@
             ConvoJson data = ConvoJson.FromJson(customData["json"].ToString());
             string text = data.Output.Text[0];
             ttsCon = new ttsController();
+            var eAndy = GameObject.Find("andyObject");
+            if (eAndy != null)
+            {
+                Animator anim = eAndy.GetComponent<Animator>();
+                if (text.Contains("joke")){
+                    anim.SetBool("isLaughing", true);
+                    anim.Play("FixedLaugh");
+                    anim.SetBool("isLaughing", false);
+                }
+                else
+                {
+                    anim.SetBool("isTalking", true);
+                    anim.Play("Talk");
+                    anim.SetBool("isTalking", false);
+                }
+            }
             ttsCon.Synthesize(text);
             
         }

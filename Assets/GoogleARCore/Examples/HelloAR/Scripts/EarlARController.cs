@@ -82,6 +82,8 @@ namespace GoogleARCore.HelloAR
         public AspectRatioFitter fit;
         public bool eEnable = false;
 
+        private Animator anim;
+
 
         /// <summary>
         /// Earl Debug message method, remove in production
@@ -141,6 +143,7 @@ namespace GoogleARCore.HelloAR
                         Destroy(GameObject.Find("andyAnchor"));
                     }
                     andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
+                    anim = andyObject.GetComponent<Animator>();
 
                     // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
                     // world evolves.
@@ -151,7 +154,7 @@ namespace GoogleARCore.HelloAR
                     andyObject.name = "andyObject";
                     anchor.name = "andyAnchor";
                     // Andy should look at the camera but still be flush with the plane.
-                    lookAtCamera();
+                    
                 }
             }
         }
@@ -169,8 +172,16 @@ namespace GoogleARCore.HelloAR
                 andyObject.transform.LookAt(FirstPersonCamera.transform);
                 andyObject.transform.rotation = Quaternion.Euler(0.0f,
                 andyObject.transform.rotation.eulerAngles.y, andyObject.transform.rotation.z);
+                Transform bone = andyObject.transform.Find("JNT_GRP/jnt_root/jnt_body/FixRotate");
+                bone.LookAt(FirstPersonCamera.transform);
+                //bone.Rotate(bone.rotation.x-39, bone.rotation.y+90,bone.rotation.z);
             }
 
+        }
+
+        public void LateUpdate()
+        {
+            lookAtCamera();
         }
 
         /// <summary>
@@ -178,7 +189,7 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         public void Update()
         {
-            lookAtCamera();
+            
    
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -235,7 +246,7 @@ namespace GoogleARCore.HelloAR
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
             placeCompanion(touch, raycastFilter);
 
-            lookAtCamera();
+            
         }
 
         public void placeCompanion(Touch touch, TrackableHitFlags raycastFilter)
