@@ -6671,7 +6671,7 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
       <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.Enum,UnityEngine.GUIStyle)">
@@ -6683,7 +6683,7 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
       <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.String,System.Enum)">
@@ -6695,7 +6695,7 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
       <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,System.String,System.Enum,UnityEngine.GUIStyle)">
@@ -6707,7 +6707,7 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
       <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,UnityEngine.GUIContent,System.Enum)">
@@ -6719,7 +6719,7 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
       <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumFlagsField(UnityEngine.Rect,UnityEngine.GUIContent,System.Enum,UnityEngine.GUIStyle)">
@@ -6731,7 +6731,7 @@ See Also: EditorBuildSettingsScene, EditorBuildSettings.scenes.</para>
       <param name="enumValue">Enum flags value (Only supports enum values for enum types with int as the underlying type).</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskField(UnityEngine.Rect,System.Enum)">
@@ -6745,7 +6745,7 @@ Make a field for enum based masks.</para>
       <param name="enumValue">Enum to use for the flags.</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The value modified by the user.</para>
+        <para>A selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskField(UnityEngine.Rect,System.String,System.Enum)">
@@ -6759,7 +6759,7 @@ Make a field for enum based masks.</para>
       <param name="enumValue">Enum to use for the flags.</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The value modified by the user.</para>
+        <para>A selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskField(UnityEngine.Rect,UnityEngine.GUIContent,System.Enum)">
@@ -6773,7 +6773,7 @@ Make a field for enum based masks.</para>
       <param name="enumValue">Enum to use for the flags.</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The value modified by the user.</para>
+        <para>A selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskField(UnityEngine.Rect,System.Enum,UnityEngine.GUIStyle)">
@@ -6787,7 +6787,7 @@ Make a field for enum based masks.</para>
       <param name="enumValue">Enum to use for the flags.</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The value modified by the user.</para>
+        <para>A selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskField(UnityEngine.Rect,System.String,System.Enum,UnityEngine.GUIStyle)">
@@ -6801,7 +6801,7 @@ Make a field for enum based masks.</para>
       <param name="enumValue">Enum to use for the flags.</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The value modified by the user.</para>
+        <para>A selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskField(UnityEngine.Rect,UnityEngine.GUIContent,System.Enum,UnityEngine.GUIStyle)">
@@ -6815,7 +6815,7 @@ Make a field for enum based masks.</para>
       <param name="enumValue">Enum to use for the flags.</param>
       <param name="style">Optional GUIStyle.</param>
       <returns>
-        <para>The value modified by the user.</para>
+        <para>A selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUI.EnumMaskPopup(UnityEngine.Rect,System.String,System.Enum)">
@@ -9832,7 +9832,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.EnumFlagsField(System.Enum,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -9846,7 +9846,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.EnumFlagsField(System.String,System.Enum,UnityEngine.GUILayoutOption[])">
@@ -9860,7 +9860,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.EnumFlagsField(System.String,System.Enum,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -9874,7 +9874,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.EnumFlagsField(UnityEngine.GUIContent,System.Enum,UnityEngine.GUILayoutOption[])">
@@ -9888,7 +9888,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.EnumFlagsField(UnityEngine.GUIContent,System.Enum,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -9902,7 +9902,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
 See Also: GUILayout.Width, GUILayout.Height, GUILayout.MinWidth, GUILayout.MaxWidth, GUILayout.MinHeight,
 GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
       <returns>
-        <para>The enum flags value modified by the user.</para>
+        <para>The enum flags value modified by the user. This is a selection BitMask where each bit represents an Enum value index. (Note this returned value is not itself an Enum).</para>
       </returns>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.EnumMaskField(UnityEngine.GUIContent,System.Enum,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -13744,7 +13744,7 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
     </member>
     <member name="M:UnityEditor.EditorWindow.Focus">
       <summary>
-        <para>Moves keyboard focus to this EditorWindow.</para>
+        <para>Moves keyboard focus to another EditorWindow.</para>
       </summary>
     </member>
     <member name="M:UnityEditor.EditorWindow.FocusWindowIfItsOpen(System.Type)">
@@ -22760,7 +22760,7 @@ See Also: PhysicsVisualizationSettings.</para>
     </member>
     <member name="P:UnityEditor.PlayerSettings.statusBarHidden">
       <summary>
-        <para>Should status bar be hidden. Supported on iOS only; on Android, the status bar is always hidden.</para>
+        <para>Returns if status bar should be hidden. Supported on iOS only; on Android, the status bar is always hidden.</para>
       </summary>
     </member>
     <member name="P:UnityEditor.PlayerSettings.stereoRenderingPath">
@@ -27623,11 +27623,6 @@ See Also:</para>
     <member name="M:UnityEditor.StaticOcclusionCulling.Compute">
       <summary>
         <para>Used to generate static occlusion culling data.</para>
-      </summary>
-    </member>
-    <member name="M:UnityEditor.StaticOcclusionCulling.GenerateInBackground">
-      <summary>
-        <para>Used to compute static occlusion culling data asynchronously.</para>
       </summary>
     </member>
     <member name="M:UnityEditor.StaticOcclusionCulling.GenerateInBackground">

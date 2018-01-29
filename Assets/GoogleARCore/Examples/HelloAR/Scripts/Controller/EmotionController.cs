@@ -174,6 +174,7 @@ public class EmotionController : MonoBehaviour {
                     string response = generateResponse(EmotionData.FromJson(downloadedJson));
                     curEmote = response;
                     responseText.text = ("You look " + response + " about ");
+                    AddEmotionText(response);//Add text to the Emotion Panel
                     getClassification();
                     if(response == "sad")
                     {
@@ -268,6 +269,7 @@ public class EmotionController : MonoBehaviour {
 
         WjsonToClass data = WjsonToClass.FromJson(customData["json"].ToString());
         responseText.text = data.Images[0].Classifiers[0].Classes[0].PurpleClass;
+        AddObjectText(data.Images[0].Classifiers[0].Classes[0].PurpleClass);//Adds text to the Object Panel
         try
         {
             ds.CreateEmotion(curEmote, System.Convert.ToSingle(data.Images[0].Classifiers[0].Classes[0].Score), System.DateTime.Now, data.Images[0].Classifiers[0].Classes[0].PurpleClass, data.Images[0].Classifiers[0].Classes[1].PurpleClass);
@@ -416,6 +418,26 @@ public class EmotionController : MonoBehaviour {
                     message, 0);
                 toastObject.Call("show");
             }));
+        }
+    }
+
+    private void AddObjectText(string text)
+    {
+        GameObject objectText = ObjectPooler.SharedInstance.GetPooledEmotions();
+        if (objectText != null)
+        {
+            objectText.GetComponent<Text>().text = text;
+            objectText.SetActive(true);
+        }
+    }
+
+    private void AddEmotionText(string text)
+    {
+        GameObject emotionText = ObjectPooler.SharedInstance.GetPooledEmotions();
+        if (emotionText != null)
+        {
+            emotionText.GetComponent<Text>().text = text;
+            emotionText.SetActive(true);
         }
     }
 }

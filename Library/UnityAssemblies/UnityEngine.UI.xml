@@ -5892,7 +5892,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
     </member>
     <member name="P:UnityEngine.UI.Toggle.isOn">
       <summary>
-        <para>Is the toggle on.</para>
+        <para>Return or set whether the Toggle is on or not.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.Toggle.onValueChanged">
