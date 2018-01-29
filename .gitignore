@@ -2,3 +2,7 @@
 *.bin
 *.log
 *.log
+*.meta
+ 	
+/Library/metadata/*
+\Library\metadata\*
